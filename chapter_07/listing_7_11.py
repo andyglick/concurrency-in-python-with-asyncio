@@ -6,18 +6,18 @@ lock_b = Lock()
 
 
 def a():
-    with lock_a: #A
-        print('Acquired lock a from method a!')
-        time.sleep(1) #B
-        with lock_b: #C
-            print('Acquired both locks from method a!')
+    with lock_a:  # A
+        print("Acquired lock a from method a!")
+        time.sleep(1)  # B
+        with lock_b:  # C
+            print("Acquired both locks from method a!")
 
 
 def b():
-    with lock_b: #D
-        print('Acquired lock b from method b!')
-        with lock_a: #E
-            print('Acquired both locks from method b!')
+    with lock_b:  # D
+        print("Acquired lock b from method b!")
+        with lock_a:  # E
+            print("Acquired both locks from method b!")
 
 
 thread_1 = Thread(target=a)

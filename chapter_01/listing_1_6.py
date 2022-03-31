@@ -11,12 +11,12 @@ def print_fib(number: int) -> None:
         else:
             return fib(n - 1) + fib(n - 2)
 
-    print(f'fib({number}) is {fib(number)}')
+    print(f"fib({number}) is {fib(number)}")
 
 
 def fibs_with_threads():
-    fortieth_thread = threading.Thread(target=print_fib, args=(40,))
-    forty_first_thread = threading.Thread(target=print_fib, args=(41,))
+    fortieth_thread = threading.Thread(target=print_fib, args=(19,))
+    forty_first_thread = threading.Thread(target=print_fib, args=(21,))
 
     fortieth_thread.start()
     forty_first_thread.start()
@@ -31,4 +31,4 @@ fibs_with_threads()
 
 end_threads = time.time()
 
-print(f'Threads took {end_threads - start_threads:.4f} seconds.')
+print(f"Threads took {end_threads - start_threads:.4f} seconds.")

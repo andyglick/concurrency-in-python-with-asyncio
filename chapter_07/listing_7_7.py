@@ -10,9 +10,10 @@ def get_status_code(url: str) -> int:
 
 @async_timed()
 async def main():
-    urls = ['https://www.example.com' for _ in range(1000)]
+    urls = ["https://www.example.com" for _ in range(1000)]
     tasks = [asyncio.to_thread(get_status_code, url) for url in urls]
     results = await asyncio.gather(*tasks)
     print(results)
+
 
 asyncio.run(main())

@@ -9,4 +9,5 @@ async def main():
         delay_time = await stdin_reader.readline()
         asyncio.create_task(delay(int(delay_time)))
 
+
 asyncio.run(main())

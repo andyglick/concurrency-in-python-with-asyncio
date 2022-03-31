@@ -8,7 +8,6 @@ from chapter_07.listing_7_13 import StressTest
 
 
 class LoadTester(Tk):
-
     def __init__(self, loop, *args, **kwargs):  # A
         Tk.__init__(self, *args, **kwargs)
         self._queue = Queue()
@@ -16,7 +15,7 @@ class LoadTester(Tk):
 
         self._loop = loop
         self._load_test: Optional[StressTest] = None
-        self.title('URL Requester')
+        self.title("URL Requester")
 
         self._url_label = Label(self, text="URL:")
         self._url_label.grid(column=0, row=0)
@@ -36,15 +35,17 @@ class LoadTester(Tk):
         self._pb_label = Label(self, text="Progress:")
         self._pb_label.grid(column=0, row=3)
 
-        self._pb = ttk.Progressbar(self, orient="horizontal", length=200, mode="determinate")
+        self._pb = ttk.Progressbar(
+            self, orient="horizontal", length=200, mode="determinate"
+        )
         self._pb.grid(column=1, row=3, columnspan=2)
 
     def _update_bar(self, pct: int):  # C
         if pct == 100:
             self._load_test = None
-            self._submit['text'] = 'Submit'
+            self._submit["text"] = "Submit"
         else:
-            self._pb['value'] = pct
+            self._pb["value"] = pct
             self.after(self._refresh_ms, self._poll_queue)
 
     def _queue_update(self, completed_requests: int, total_requests: int):  # D
@@ -60,15 +61,17 @@ class LoadTester(Tk):
 
     def _start(self):  # F
         if self._load_test is None:
-            self._submit['text'] = 'Cancel'
-            test = StressTest(self._loop,
-                              self._url_field.get(),
-                              int(self._request_field.get()),
-                              self._queue_update)
+            self._submit["text"] = "Cancel"
+            test = StressTest(
+                self._loop,
+                self._url_field.get(),
+                int(self._request_field.get()),
+                self._queue_update,
+            )
             self.after(self._refresh_ms, self._poll_queue)
             test.start()
             self._load_test = test
         else:
             self._load_test.cancel()
             self._load_test = None
-            self._submit['text'] = 'Submit'
+            self._submit["text"] = "Submit"

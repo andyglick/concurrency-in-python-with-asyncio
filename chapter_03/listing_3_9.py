@@ -6,9 +6,9 @@ from util import delay
 
 
 def cancel_tasks():
-    print('Got a SIGINT!')
+    print("Got a SIGINT!")
     tasks: Set[asyncio.Task] = asyncio.all_tasks()
-    print(f'Cancelling {len(tasks)} task(s).')
+    print(f"Cancelling {len(tasks)} task(s).")
     [task.cancel() for task in tasks]
 
 

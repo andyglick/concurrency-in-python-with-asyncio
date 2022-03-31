@@ -6,15 +6,11 @@ from aiohttp.web_response import Response
 routes = web.RouteTableDef()
 
 
-@routes.get('/time')  # A
+@routes.get("/time")  # A
 async def time(request: Request) -> Response:
     today = datetime.today()
 
-    result = {
-        'month': today.month,
-        'day': today.day,
-        'time': str(today.time())
-    }
+    result = {"month": today.month, "day": today.day, "time": str(today.time())}
 
     return web.json_response(result)  # B
 

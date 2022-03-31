@@ -8,7 +8,7 @@ async def add_one(number: int) -> int:
 
 async def hello_world_message() -> str:
     await delay(1)
-    return 'Hello World!'
+    return "Hello World!"
 
 
 async def main() -> None:

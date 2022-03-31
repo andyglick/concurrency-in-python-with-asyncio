@@ -14,4 +14,5 @@ async def main() -> None:
     task_one = asyncio.create_task(cpu_bound_work())
     await task_one
 
+
 asyncio.run(main(), debug=True)
